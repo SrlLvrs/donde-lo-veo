@@ -1,0 +1,34 @@
+[
+    {
+        "endpoint": "Streaming Avalability - BASIC GET",
+        "age": null,
+        "backdropPath": null,
+        "backdropURLs": null,
+        "cast": null,
+        "countries": null,
+        "genres": null,
+        "imdbID": null,
+        "imdbRating": null,
+        "imdbVoteCount": null,
+        "originalLanguage": null,
+        "originalTitle": null,
+        "overview": null,
+        "posterPath": null,
+        "posterURLs": null,
+        "runtime": null,
+        "significants": null,
+        "streamingInfo": {
+            "hbo": {
+                "cl": {
+                    "link": null
+                }
+            }
+        },
+        "tagline": null,
+        "title": null,
+        "tmdbId": null,
+        "tmdbRating": null,
+        "video": null,
+        "year": null
+    }
+]
