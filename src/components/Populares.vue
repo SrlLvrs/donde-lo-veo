@@ -1,7 +1,6 @@
 <script>
 import axios from "axios";
 import Modal from "./Modal.vue";
-import Modal2 from "./Modal2.vue";
 
 export default {
   //Nombre del componente
@@ -23,7 +22,7 @@ export default {
       .then((response) => (this.populares = response.data.results));
     console.log(this.populares);
   },
-  components: { Modal, Modal2 },
+  components: { Modal },
 };
 </script>
 
@@ -34,7 +33,7 @@ export default {
       class="md:text-xl lg:text-2xl carousel-item h-72 md:h-96 lg:h-[32rem] xl:h-[40rem] w-full bg-cover bg-center"
       v-for="item in populares"
       :key="item.index"
-      :style="{ backgroundImage: `url(${this.image}${item.backdrop_path})` }"
+      :style="{ backgroundImage: `url(${this.image}+${item.backdrop_path})` }"
     >
       <!-- Título y botones -->
       <div class="grid grid-cols-2 gap-1 w-full">

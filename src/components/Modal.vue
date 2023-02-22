@@ -45,7 +45,8 @@ export default {
 
 <template>
   <!-- Botón para abrir el modal -->
-  <label :for="id" class="btn" @click="checkStreaming">Donde ver</label>
+  <!-- Este botón también ejecuta la función para checkear disponibilidad de streaming -->
+  <label :for="id" class="btn btn-primary text-xs md:text-base lg:text-lg" @click="checkStreaming">Donde ver</label>
 
   <!-- Modal. El ID siempre debe ser entregado por la API, para evitar abrir siempre el mismo modal -->
   <input type="checkbox" :id="id" class="modal-toggle" />
