@@ -20,7 +20,7 @@ export default {
 
   methods: {
     async checkStreaming(event) {
-      //Endpoint para disponibilidad
+      //Endpoint para obtener resultados de un título, que se pasa por ID
       let url = "https://streaming-availability.p.rapidapi.com/get/basic";
       const options = {
         params: {
@@ -51,28 +51,75 @@ export default {
   <!-- Modal. El ID siempre debe ser entregado por la API, para evitar abrir siempre el mismo modal -->
   <input type="checkbox" :id="id" class="modal-toggle" />
   <div class="modal modal-bottom sm:modal-middle">
+    <!-- El modal sólo aparece si hay contenido en POSTS -->
+    <!-- Es decir, que el modal espera a que la información llegue desde la API -->
     <div class="modal-box" v-if="posts">
       <h3 class="font-bold text-lg">¿Donde ver {{ name }}?</h3>
+      <!-- Renderización condicional en base a los links que encuentre -->
+      <!-- HBO MAX -->
       <p class="py-4" v-if="posts.streamingInfo.hbo">
-        {{ posts.streamingInfo.hbo.cl.link }}
+        <a :href="posts.streamingInfo.hbo.cl.link" target="_blank">
+          <img
+          class="relative bottom-0.5 mr-2 inline-block w-24"
+          src="/hbo.svg"
+          alt="hbo max logo"
+          />
+        </a>
       </p>
+      <!-- NETFLIX -->
       <p class="py-4" v-if="posts.streamingInfo.netflix">
-        {{ posts.streamingInfo.netflix.cl.link }}
+        <a :href="posts.streamingInfo.netflix.cl.link" target="_blank">
+          <img
+          class="relative bottom-0.5 mr-2 inline-block w-24"
+          src="/netflix.svg"
+          alt="netflix logo"
+          />
+        </a>
       </p>
+      <!-- APPLE TV+ -->
       <p class="py-4" v-if="posts.streamingInfo.apple">
-        {{ posts.streamingInfo.apple.cl.link }}
+        <a :href="posts.streamingInfo.apple.cl.link" target="_blank">
+          <img
+          class="relative bottom-0.5 mr-2 inline-block w-24"
+          src="/apple.svg"
+          alt="apple logo"
+          />
+        </a>
       </p>
+      <!-- AMAZON PRIME VIDEO -->
       <p class="py-4" v-if="posts.streamingInfo.prime">
-        {{ posts.streamingInfo.prime.cl.link }}
+        <a :href="posts.streamingInfo.prime.cl.link" target="_blank">
+          <img
+          class="relative bottom-0.5 mr-2 inline-block w-24"
+          src="/prime.svg"
+          alt="amazon prime logo"
+          />
+        </a>
       </p>
+      <!-- DISNEY+ -->
       <p class="py-4" v-if="posts.streamingInfo.disney">
-        {{ posts.streamingInfo.disney.cl.link }}
+        <a :href="posts.streamingInfo.disney.cl.link" target="_blank">
+          <img
+          class="relative bottom-0.5 mr-2 inline-block w-24"
+          src="/disney.svg"
+          alt="disney logo"
+          />
+        </a>
       </p>
+      <!-- MUBI -->
       <p class="py-4" v-if="posts.streamingInfo.mubi">
-        {{ posts.streamingInfo.mubi.cl.link }}
+        <a :href="posts.streamingInfo.mubi.cl.link" target="_blank">
+          <img
+          class="relative bottom-0.5 mr-2 inline-block w-24"
+          src="/mubi.svg"
+          alt="mubi logo"
+          />
+        </a>
       </p>
+      <!-- SIN INFO -->
+      <p class="py-4" v-else>No hay información de streaming sobre éste título :(</p>
       <div class="modal-action">
-        <label :for="id" class="btn">Cerrar</label>
+        <label :for="id" class="btn">Gracias!</label>
       </div>
     </div>
   </div>

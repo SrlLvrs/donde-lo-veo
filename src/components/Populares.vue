@@ -46,16 +46,13 @@ export default {
             <img
               class="relative bottom-0.5 mr-2 inline-block h-6 w-11"
               src="/tmdb.svg"
-              alt="imdb logo"
+              alt="tmdb logo"
             />
             {{ item.vote_average }}
           </p>
         </div>
         <!-- Columna derecha: Botones -->
         <div class="flex justify-end mt-auto gap-2 p-3 lg:p-5">
-          <button class="btn btn-primary text-xs md:text-base lg:text-lg">
-            Donde ver
-          </button>
           <!-- Modal -->
           <Modal :name="item.title" :id="item.id"></Modal>
         </div>
