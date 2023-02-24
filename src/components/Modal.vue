@@ -67,7 +67,7 @@ export default {
         </a>
       </p>
       <!-- NETFLIX -->
-      <p class="py-4" v-if="posts.streamingInfo.netflix">
+      <p class="py-4" v-else-if="posts.streamingInfo.netflix">
         <a :href="posts.streamingInfo.netflix.cl.link" target="_blank">
           <img
           class="relative bottom-0.5 mr-2 inline-block w-24"
@@ -77,7 +77,7 @@ export default {
         </a>
       </p>
       <!-- APPLE TV+ -->
-      <p class="py-4" v-if="posts.streamingInfo.apple">
+      <p class="py-4" v-else-if="posts.streamingInfo.apple">
         <a :href="posts.streamingInfo.apple.cl.link" target="_blank">
           <img
           class="relative bottom-0.5 mr-2 inline-block w-24"
@@ -87,7 +87,7 @@ export default {
         </a>
       </p>
       <!-- AMAZON PRIME VIDEO -->
-      <p class="py-4" v-if="posts.streamingInfo.prime">
+      <p class="py-4" v-else-if="posts.streamingInfo.prime">
         <a :href="posts.streamingInfo.prime.cl.link" target="_blank">
           <img
           class="relative bottom-0.5 mr-2 inline-block w-24"
@@ -97,7 +97,7 @@ export default {
         </a>
       </p>
       <!-- DISNEY+ -->
-      <p class="py-4" v-if="posts.streamingInfo.disney">
+      <p class="py-4" v-else-if="posts.streamingInfo.disney">
         <a :href="posts.streamingInfo.disney.cl.link" target="_blank">
           <img
           class="relative bottom-0.5 mr-2 inline-block w-24"
@@ -107,7 +107,7 @@ export default {
         </a>
       </p>
       <!-- MUBI -->
-      <p class="py-4" v-if="posts.streamingInfo.mubi">
+      <p class="py-4" v-else-if="posts.streamingInfo.mubi">
         <a :href="posts.streamingInfo.mubi.cl.link" target="_blank">
           <img
           class="relative bottom-0.5 mr-2 inline-block w-24"
