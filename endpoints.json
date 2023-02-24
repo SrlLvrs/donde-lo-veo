@@ -1,6 +1,6 @@
+Streaming Avalability - BASIC GET
 [
     {
-        "endpoint": "Streaming Avalability - BASIC GET",
         "age": null,
         "backdropPath": null,
         "backdropURLs": null,
@@ -30,5 +30,26 @@
         "tmdbRating": null,
         "video": null,
         "year": null
+    }
+]
+TMDB - Discover Movies
+[
+    {
+        "adult": "",
+        "backdrop_path": "",
+        "genre_ids": [
+            1,2,3
+        ],
+        "id": "",
+        "original_language": "en",
+        "original_title": "",
+        "overview": "",
+        "popularity": "",
+        "poster_path": "",
+        "release_date": "",
+        "title": "",
+        "video": "",
+        "vote_average": "",
+        "vote_count": ""
     }
 ]
