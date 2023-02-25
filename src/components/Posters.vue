@@ -4,7 +4,7 @@ import Modal from "./Modal.vue";
 
 export default {
   //Nombre del componente
-  name: "Populares",
+  name: "Posters",
   data() {
     return {
       //Array para guardar datos de la API
@@ -14,11 +14,12 @@ export default {
   },
   //Método para llamar a la API cuando se cree la instancia
   async created() {
+    let base_url = "https://api.themoviedb.org/3/discover"
     let key = import.meta.env.VITE_TMDB_KEY;
     let sort = "vote_average.desc"
     let providers = "8|337|119|350|384|11"
     //Variable con endpoint
-    let url = `https://api.themoviedb.org/3/discover/movie?api_key=${key}&language=es&sort_by=${sort}&include_adult=false&include_video=false&page=1&vote_count.gte=200&with_watch_providers=${providers}&watch_region=CL`;
+    let url = `${base_url}/movie?api_key=${key}&language=es&sort_by=${sort}&include_adult=false&include_video=false&page=1&vote_count.gte=200&with_watch_providers=${providers}&watch_region=CL`;
     await axios
       .get(url)
       .then((response) => (this.mejores = response.data.results));
@@ -29,7 +30,7 @@ export default {
 </script>
 
 <template>
-  <h2 class="m-5 text-xl md:text-2xl font-semibold">Mejor Evaluadas</h2>
+  <h2 class="m-5 text-xl md:text-2xl font-semibold">Películas Mejor Evaluadas</h2>
   <div class="carousel rounded-box">
     <div
       class="carousel-item pb-4 mr-3"
