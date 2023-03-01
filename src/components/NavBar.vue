@@ -2,10 +2,7 @@
 import {
   HomeIcon,
   MagnifyingGlassIcon,
-  HeartIcon,
-  ArrowDownTrayIcon,
-  Cog8ToothIcon,
-  VideoCameraIcon
+  GlobeAmericasIcon,
 } from "@heroicons/vue/24/outline";
 
 const items = [
@@ -15,24 +12,14 @@ const items = [
     icon: HomeIcon,
   },
   {
-    name: "Descubrir",
+    name: "Buscar",
     href: "#",
     icon: MagnifyingGlassIcon,
   },
   {
-    name: "Favoritos",
+    name: "Descubrir",
     href: "#",
-    icon: HeartIcon,
-  },
-  {
-    name: "Descargado",
-    href: "#",
-    icon: ArrowDownTrayIcon,
-  },
-  {
-    name: "Configuración",
-    href: "#",
-    icon: Cog8ToothIcon,
+    icon: GlobeAmericasIcon,
   },
 ];
 </script>
@@ -43,15 +30,33 @@ const items = [
       <!-- Lado izquierdo del navbar, contiene el menú mobile -->
       <div class="dropdown">
         <label tabindex="0" class="btn btn-ghost lg:hidden">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h8m-8 6h16"
+            />
           </svg>
         </label>
         <!-- Navbar mobile -->
-        <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+        <ul
+          tabindex="0"
+          class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+        >
           <li v-for="item in items" :key="item.name" :href="item.href">
             <a :href="item.href">
-              <component :is="item.icon" class="h-6 w-6 flex-shrink-0" aria-hidden="true" />
+              <component
+                :is="item.icon"
+                class="h-6 w-6 flex-shrink-0"
+                aria-hidden="true"
+              />
               <span class="md:text-lg">
                 {{ item.name }}
               </span>
@@ -60,10 +65,7 @@ const items = [
         </ul>
       </div>
       <a class="btn btn-ghost normal-case text-xl">
-        <span class="mr-2">
-          Movie Dashboard
-        </span>
-        <VideoCameraIcon class="h-8 w-8 relative top-px" />
+        <span class="mr-2"> Dónde lo veo </span>
       </a>
     </div>
     <div class="navbar-center">
@@ -74,7 +76,11 @@ const items = [
       <ul class="menu menu-horizontal px-1">
         <li v-for="item in items" :key="item.name" :href="item.href">
           <a :href="item.href">
-            <component :is="item.icon" class="h-6 w-6 flex-shrink-0" aria-hidden="true" />
+            <component
+              :is="item.icon"
+              class="h-6 w-6 flex-shrink-0"
+              aria-hidden="true"
+            />
             {{ item.name }}
           </a>
         </li>

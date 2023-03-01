@@ -27,13 +27,12 @@ export default {
 </script>
 
 <template>
-  <h1 class="m-5 md:text-2xl text-xl font-semibold">Películas populares</h1>
   <div class="carousel rounded-box">
     <div
       class="md:text-xl lg:text-2xl carousel-item h-72 md:h-96 lg:h-[32rem] xl:h-[40rem] w-full bg-cover bg-center"
       v-for="item in populares"
       :key="item.index"
-      :style="{ backgroundImage: `url(${this.image}+${item.backdrop_path})` }"
+      :style="{ backgroundImage: `url(${this.image}${item.backdrop_path})` }"
     >
       <!-- Título y botones -->
       <div class="grid grid-cols-2 gap-1 w-full">

@@ -19,7 +19,7 @@ export default {
     let sort = "vote_average.desc"
     let providers = "8|337|119|350|384|11"
     //Variable con endpoint
-    let url = `${base_url}/movie?api_key=${key}&language=es&sort_by=${sort}&include_adult=false&include_video=false&page=1&vote_count.gte=200&with_watch_providers=${providers}&watch_region=CL`;
+    let url = `${base_url}/movie?api_key=${key}&language=es&sort_by=${sort}&include_adult=false&include_video=false&page=1&vote_count.gte=5000&with_watch_providers=${providers}&watch_region=CL`;
     await axios
       .get(url)
       .then((response) => (this.mejores = response.data.results));
