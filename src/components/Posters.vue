@@ -23,7 +23,7 @@ export default {
     await axios
       .get(url)
       .then((response) => (this.mejores = response.data.results));
-    console.log(this.mejores);
+    //console.log(this.mejores);
   },
   components: { Modal },
 };
@@ -38,13 +38,13 @@ export default {
       :key="item.index"
     >
       <div class="card card-compact w-40 md:w-48 bg-base-100 shadow-lg">
-        <figure><img :src="image+item.poster_path" alt="poster" /></figure>
-        <div class="card-body">
+        <figure><img class="h-60 md:h-72" :src="image+item.poster_path" alt="poster" /></figure>
+        <div class="card-body gap-0">
           <a :href="item.href">
             <h2 class="card-title">{{ item.title }}</h2>
           </a>
           <p class="lg:text-lg">{{ item.release_date }}</p>
-          <!-- ESTRELLA SVG -->
+          <!-- ESTRELLA SVG CON NOTA -->
           <p class="lg:text-lg">
             <svg
               xmlns="http://www.w3.org/2000/svg"

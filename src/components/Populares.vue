@@ -15,12 +15,32 @@ export default {
   //Método para llamar a la API cuando se cree la instancia
   async created() {
     let key = import.meta.env.VITE_TMDB_KEY;
+    let base_url = "https://api.themoviedb.org/3/discover";
+    let sort = "popularity.desc";
+    let providers = "8|337|119|350|384|11";
     //Variable con endpoint
-    let url = `https://api.themoviedb.org/3/discover/movie?api_key=${key}&language=es&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_providers=8|337|119|350|384|11&watch_region=CL`;
+    let url = `${base_url}/movie?api_key=${key}&language=es&sort_by=${sort}&include_adult=false&include_video=false&page=1&with_watch_providers=${providers}&watch_region=CL`;
     await axios
       .get(url)
       .then((response) => (this.populares = response.data.results));
-    console.log(this.populares);
+    //console.log(this.populares);
+
+    //Obtener los ids anteriores y siguientes para el carrusel
+    var l = this.populares.length;
+    var i;
+
+    for (i = 0; i < l; i++) {
+      var previous = this.populares[i == 0 ? this.populares.length - 1 : i - 1];
+      var current = this.populares[i];
+      var next = this.populares[i == this.populares.length - 1 ? 0 : i + 1];
+      //Se le añade el # para usarlo como id en el DOM
+      this.populares[i].anterior = "#" + previous.id;
+      this.populares[i].siguiente = "#" + next.id;
+      //Este se guarda por si acaso, en realidad no se usa
+      this.populares[i].actual = current.id;
+      console.log(this.populares[i].anterior);
+      console.log(this.populares[i].siguiente);
+    }
   },
   components: { Modal },
 };
@@ -29,10 +49,11 @@ export default {
 <template>
   <div class="carousel rounded-box">
     <div
-      class="md:text-xl lg:text-2xl carousel-item h-72 md:h-96 lg:h-[32rem] xl:h-[40rem] w-full bg-cover bg-center"
+      class="md:text-xl lg:text-2xl carousel-item relative h-72 md:h-96 lg:h-[32rem] xl:h-[40rem] w-full bg-cover bg-center"
       v-for="item in populares"
       :key="item.index"
       :style="{ backgroundImage: `url(${this.image}${item.backdrop_path})` }"
+      :id="item.id"
     >
       <!-- Título y botones -->
       <div class="grid grid-cols-2 gap-1 w-full">
@@ -55,6 +76,13 @@ export default {
           <!-- Modal -->
           <Modal :name="item.title" :id="item.id"></Modal>
         </div>
+      </div>
+      <!-- BOTONES DE CONTROL -->
+      <div
+        class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
+      >
+        <a :href="item.anterior" class="btn btn-circle">❮</a>
+        <a :href="item.siguiente" class="btn btn-circle">❯</a>
       </div>
     </div>
   </div>
