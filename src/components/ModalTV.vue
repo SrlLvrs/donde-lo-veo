@@ -8,6 +8,7 @@ export default {
   props: {
     //Nombre e ID del título
     name: String,
+    overview: String,
     id: Number,
     id_modal: String
   },
@@ -58,7 +59,7 @@ export default {
       <h3 class="font-bold text-lg">¿Donde ver {{ name }}?</h3>
       <!-- Renderización condicional en base a los links que encuentre -->
       <!-- HBO MAX -->
-      <p class="py-4" v-if="posts.streamingInfo.hbo">
+      <div class="py-4" v-if="posts.streamingInfo.hbo">
         <a :href="posts.streamingInfo.hbo.cl.link" target="_blank">
           <img
           class="relative bottom-0.5 mr-2 inline-block w-24"
@@ -66,9 +67,16 @@ export default {
           alt="hbo max logo"
           />
         </a>
-      </p>
+        <p class="text-sm py-4">
+          <h2 class="text-base">
+            Sinopsis:
+          </h2>
+          <br>
+          {{ overview }}
+        </p>
+      </div>
       <!-- NETFLIX -->
-      <p class="py-4" v-else-if="posts.streamingInfo.netflix">
+      <div class="py-4" v-else-if="posts.streamingInfo.netflix">
         <a :href="posts.streamingInfo.netflix.cl.link" target="_blank">
           <img
           class="relative bottom-0.5 mr-2 inline-block w-24"
@@ -76,9 +84,16 @@ export default {
           alt="netflix logo"
           />
         </a>
-      </p>
+        <p class="text-sm py-4">
+          <h2 class="text-base">
+            Sinopsis:
+          </h2>
+          <br>
+          {{ overview }}
+        </p>
+      </div>
       <!-- APPLE TV+ -->
-      <p class="py-4" v-else-if="posts.streamingInfo.apple">
+      <div class="py-4" v-else-if="posts.streamingInfo.apple">
         <a :href="posts.streamingInfo.apple.cl.link" target="_blank">
           <img
           class="relative bottom-0.5 mr-2 inline-block w-24"
@@ -86,9 +101,16 @@ export default {
           alt="apple logo"
           />
         </a>
-      </p>
+        <p class="text-sm py-4">
+          <h2 class="text-base">
+            Sinopsis:
+          </h2>
+          <br>
+          {{ overview }}
+        </p>
+      </div>
       <!-- AMAZON PRIME VIDEO -->
-      <p class="py-4" v-else-if="posts.streamingInfo.prime">
+      <div class="py-4" v-else-if="posts.streamingInfo.prime">
         <a :href="posts.streamingInfo.prime.cl.link" target="_blank">
           <img
           class="relative bottom-0.5 mr-2 inline-block w-24"
@@ -96,9 +118,16 @@ export default {
           alt="amazon prime logo"
           />
         </a>
-      </p>
+        <p class="text-sm py-4">
+          <h2 class="text-base">
+            Sinopsis:
+          </h2>
+          <br>
+          {{ overview }}
+        </p>
+      </div>
       <!-- DISNEY+ -->
-      <p class="py-4" v-else-if="posts.streamingInfo.disney">
+      <div class="py-4" v-else-if="posts.streamingInfo.disney">
         <a :href="posts.streamingInfo.disney.cl.link" target="_blank">
           <img
           class="relative bottom-0.5 mr-2 inline-block w-24"
@@ -106,9 +135,16 @@ export default {
           alt="disney logo"
           />
         </a>
-      </p>
+        <p class="text-sm py-4">
+          <h2 class="text-base">
+            Sinopsis:
+          </h2>
+          <br>
+          {{ overview }}
+        </p>
+      </div>
       <!-- MUBI -->
-      <p class="py-4" v-else-if="posts.streamingInfo.mubi">
+      <div class="py-4" v-else-if="posts.streamingInfo.mubi">
         <a :href="posts.streamingInfo.mubi.cl.link" target="_blank">
           <img
           class="relative bottom-0.5 mr-2 inline-block w-24"
@@ -116,7 +152,14 @@ export default {
           alt="mubi logo"
           />
         </a>
-      </p>
+        <p class="text-sm py-4">
+          <h2 class="text-base">
+            Sinopsis:
+          </h2>
+          <br>
+          {{ overview }}
+        </p>
+      </div>
       <!-- SIN INFO -->
       <p class="py-4" v-else>No hay información de streaming sobre éste título :(</p>
       <div class="modal-action">

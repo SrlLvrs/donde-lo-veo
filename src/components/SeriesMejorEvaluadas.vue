@@ -19,7 +19,7 @@ export default {
     let sort = "vote_average.desc"
     let providers = "8|337|119|350|384|11"
     //Variable con endpoint
-    let url = `${base_url}/tv?api_key=${key}&language=en&sort_by=${sort}&include_adult=false&include_video=false&page=1&vote_count.gte=1000&with_watch_providers=${providers}&watch_region=CL`;
+    let url = `${base_url}/tv?api_key=${key}&language=es&sort_by=${sort}&include_adult=false&include_video=false&page=1&vote_count.gte=1000&with_watch_providers=${providers}&watch_region=CL`;
     await axios
       .get(url)
       .then((response) => (this.mejores = response.data.results));
@@ -59,7 +59,7 @@ export default {
             </svg>
             {{ item.vote_average }}
           </p>
-          <ModalTV :name="item.name" :id="item.id" :id_modal="item.name"></ModalTV>
+          <ModalTV :name="item.name" :id="item.id" :id_modal="item.name" :overview="item.overview"></ModalTV>
         </div>
       </div>
     </div>

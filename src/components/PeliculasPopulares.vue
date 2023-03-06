@@ -1,6 +1,6 @@
 <script>
 import axios from "axios";
-import Modal from "./ModalMovie.vue";
+import ModalMovie from "./ModalMovie.vue";
 
 export default {
   //Nombre del componente
@@ -19,7 +19,7 @@ export default {
     let sort = "popularity.desc";
     let providers = "8|337|119|350|384|11";
     //Variable con endpoint
-    let url = `${base_url}/movie?api_key=${key}&language=en&sort_by=${sort}&include_adult=false&include_video=false&page=1&with_watch_providers=${providers}&watch_region=CL`;
+    let url = `${base_url}/movie?api_key=${key}&language=es&sort_by=${sort}&include_adult=false&include_video=false&page=1&with_watch_providers=${providers}&watch_region=CL`;
     await axios
       .get(url)
       .then((response) => (this.populares = response.data.results));
@@ -42,7 +42,7 @@ export default {
       console.log(this.populares[i].siguiente);
     }
   },
-  components: { Modal },
+  components: { ModalMovie },
 };
 </script>
 
@@ -76,7 +76,7 @@ export default {
         <!-- Columna derecha: Botones -->
         <div class="flex justify-end mt-auto gap-2 p-3 lg:p-5">
           <!-- Modal -->
-          <Modal :name="item.title" :id="item.id" :id_modal="item.title"></Modal>
+          <ModalMovie :name="item.title" :id="item.id" :id_modal="item.title" :overview="item.overview"></ModalMovie>
         </div>
       </div>
       <!-- BOTONES DE CONTROL -->
