@@ -1,10 +1,10 @@
 <script>
 import axios from "axios";
-import Modal from "./Modal.vue";
+import ModalMovie from "./ModalMovie.vue";
 
 export default {
   //Nombre del componente
-  name: "Posters",
+  name: "PeliculasMejorEvaluadas",
   data() {
     return {
       //Array para guardar datos de la API
@@ -19,13 +19,13 @@ export default {
     let sort = "vote_average.desc"
     let providers = "8|337|119|350|384|11"
     //Variable con endpoint
-    let url = `${base_url}/movie?api_key=${key}&language=es&sort_by=${sort}&include_adult=false&include_video=false&page=1&vote_count.gte=5000&with_watch_providers=${providers}&watch_region=CL`;
+    let url = `${base_url}/movie?api_key=${key}&language=en&sort_by=${sort}&include_adult=false&include_video=false&page=1&vote_count.gte=1000&with_watch_providers=${providers}&watch_region=CL`;
     await axios
       .get(url)
       .then((response) => (this.mejores = response.data.results));
     //console.log(this.mejores);
   },
-  components: { Modal },
+  components: { ModalMovie },
 };
 </script>
 
@@ -38,14 +38,13 @@ export default {
       :key="item.index"
     >
       <div class="card card-compact w-40 md:w-48 bg-base-100 shadow-lg">
-        <figure><img class="h-60 md:h-72" :src="image+item.poster_path" alt="poster" /></figure>
+        <figure><img class="h-60 md:h-72" :src="image+item.poster_pathh" alt="poster" /></figure>
         <div class="card-body gap-0">
           <a :href="item.href">
             <h2 class="card-title">{{ item.title }}</h2>
           </a>
-          <p class="lg:text-lg">{{ item.release_date }}</p>
           <!-- ESTRELLA SVG CON NOTA -->
-          <p class="lg:text-lg">
+          <p class="lg:text-lg pb-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -60,7 +59,7 @@ export default {
             </svg>
             {{ item.vote_average }}
           </p>
-          <Modal :name="item.title" :id="item.id"></Modal>
+          <ModalMovie :name="item.title" :id="item.id" :id_modal="item.title"></ModalMovie>
         </div>
       </div>
     </div>

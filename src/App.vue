@@ -1,11 +1,13 @@
 <script setup>
-import Populares from "./components/Populares.vue";
-import Posters from "./components/Posters.vue";
+import PeliculasPopulares from "./components/PeliculasPopulares.vue";
+import PeliculasMejorEvaluadas from "./components/PeliculasMejorEvaluadas.vue";
 import NavBar from "./components/NavBar.vue";
+import SeriesMejorEvaluadas from "./components/SeriesMejorEvaluadas.vue";
 </script>
 
 <template>
   <NavBar></NavBar>
-  <Populares></Populares>
-  <Posters></Posters>
+  <PeliculasPopulares></PeliculasPopulares>
+  <PeliculasMejorEvaluadas></PeliculasMejorEvaluadas>
+  <SeriesMejorEvaluadas></SeriesMejorEvaluadas>
 </template>

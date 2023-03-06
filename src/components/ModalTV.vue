@@ -3,12 +3,13 @@ import axios from "axios";
 
 export default {
   //Nombre del componente
-  name: "Modal",
+  name: "ModalTV",
 
   props: {
     //Nombre e ID del título
     name: String,
     id: Number,
+    id_modal: String
   },
 
   data() {
@@ -25,7 +26,7 @@ export default {
       const options = {
         params: {
           country: "cl",
-          tmdb_id: `movie/${this.id}`,
+          tmdb_id: `tv/${this.id}`,
           output_language: "es",
         },
         headers: {
@@ -46,10 +47,10 @@ export default {
 <template>
   <!-- Botón para abrir el modal -->
   <!-- Este botón también ejecuta la función para checkear disponibilidad de streaming -->
-  <label :for="id" class="btn btn-primary text-xs md:text-base lg:text-lg" @click="checkStreaming">Donde ver</label>
+  <label :for="id_modal" class="btn btn-primary text-xs md:text-base lg:text-lg" @click="checkStreaming">Donde ver</label>
 
   <!-- Modal. El ID siempre debe ser entregado por la API, para evitar abrir siempre el mismo modal -->
-  <input type="checkbox" :id="id" class="modal-toggle" />
+  <input type="checkbox" :id="id_modal" class="modal-toggle" />
   <div class="modal modal-bottom sm:modal-middle">
     <!-- El modal sólo aparece si hay contenido en POSTS -->
     <!-- Es decir, que el modal espera a que la información llegue desde la API -->
@@ -119,7 +120,7 @@ export default {
       <!-- SIN INFO -->
       <p class="py-4" v-else>No hay información de streaming sobre éste título :(</p>
       <div class="modal-action">
-        <label :for="id" class="btn">Gracias!</label>
+        <label :for="id_modal" class="btn">Gracias!</label>
       </div>
     </div>
   </div>
