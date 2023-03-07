@@ -25,7 +25,7 @@ const items = [
 </script>
 
 <template>
-  <div class="navbar bg-base-100">
+  <div class="navbar fixed top-0 z-10 bg-white/50 backdrop-blur-sm">
     <div class="navbar-start lg:w-1/4">
       <!-- Lado izquierdo del navbar, contiene el menú mobile -->
       <div class="dropdown">

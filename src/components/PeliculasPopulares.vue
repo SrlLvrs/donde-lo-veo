@@ -47,10 +47,10 @@ export default {
 
 <template>
   <!-- Carrusel -->
-  <div class="carousel rounded-box">
+  <div class="carousel">
     <!-- Carrusel item -->
     <div
-      class="md:text-xl lg:text-2xl carousel-item relative h-72 md:h-96 lg:h-[32rem] xl:h-[40rem] w-full bg-cover bg-center"
+      class="md:text-xl lg:text-2xl carousel-item relative h-72 md:h-96 lg:h-[32rem] xl:h-[40rem] w-full bg-cover bg-top"
       v-for="item in populares"
       :key="item.index"
       :style="{ backgroundImage: `url(${this.image}+${item.backdrop_path})` }"
@@ -64,30 +64,31 @@ export default {
             <Logo :id="item.id"></Logo>
             <br />
             <!-- TMDB LOGO -->
-            <img
+            <!-- <img
               class="relative bottom-0.5 mr-2 inline-block h-6 w-11"
               src="/tmdb.svg"
               alt="tmdb logo"
             />
-            {{ item.vote_average }}
+            {{ item.vote_average }} -->
           </p>
         </div>
         <!-- Columna derecha: Botones -->
         <div class="flex justify-end mt-auto gap-2 p-3 lg:p-5">
           <!-- Modal -->
-          <ModalMovie :name="item.title" :id="item.id" :id_modal="item.title" :overview="item.overview"></ModalMovie>
+          <ModalMovie
+            :name="item.title"
+            :id="item.id"
+            :id_modal="item.title"
+            :overview="item.overview"
+          ></ModalMovie>
         </div>
       </div>
       <!-- BOTONES DE CONTROL -->
       <div
         class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
       >
-        <a :href="item.anterior" class="btn btn-circle btn-primary"
-          >❮</a
-        >
-        <a :href="item.siguiente" class="btn btn-circle btn-primary"
-          >❯</a
-        >
+        <a :href="item.anterior" class="btn btn-circle btn-primary">❮</a>
+        <a :href="item.siguiente" class="btn btn-circle btn-primary">❯</a>
       </div>
     </div>
   </div>
