@@ -23,7 +23,6 @@ export default {
     await axios
       .get(url)
       .then((response) => (this.mejores = response.data.results));
-    console.log(this.mejores);
   },
   components: { ModalTV },
 };

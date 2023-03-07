@@ -6,7 +6,6 @@ export default {
   name: "ModalMovie",
 
   props: {
-    //Nombre e ID del título
     name: String,
     overview: String,
     id: Number,

@@ -1,6 +1,7 @@
 <script>
 import axios from "axios";
 import ModalMovie from "./ModalMovie.vue";
+import Logo from "./Logo.vue";
 
 export default {
   //Nombre del componente
@@ -23,26 +24,24 @@ export default {
     await axios
       .get(url)
       .then((response) => (this.populares = response.data.results));
-    //console.log(this.populares);
 
-    //Obtener los ids anteriores y siguientes para el carrusel
-    var l = this.populares.length;
+    //OBTENER IDS PARA CARRUSEL
+    var len = this.populares.length;
     var i;
 
-    for (i = 0; i < l; i++) {
-      var previous = this.populares[i == 0 ? this.populares.length - 1 : i - 1];
-      var current = this.populares[i];
-      var next = this.populares[i == this.populares.length - 1 ? 0 : i + 1];
-      //Se le añade el # para usarlo como id en el DOM
+    for (i = 0; i < len; i++) {
+      /*Si i es igual a cero, el indice es el último del array
+      En caso contrario, es i - 1 (es decir, el anterior)*/
+      var previous = this.populares[i == 0 ? len - 1 : i - 1];
+      /*Si i es igual al len - 1, entonces el índice es 0
+      sino, es i + 1*/
+      var next = this.populares[i == len - 1 ? 0 : i + 1];
+      //Se le añade el # para hacerle referencia de id en el DOM
       this.populares[i].anterior = "#" + previous.id;
       this.populares[i].siguiente = "#" + next.id;
-      //Este se guarda por si acaso, en realidad no se usa
-      this.populares[i].actual = current.id;
-      console.log(this.populares[i].anterior);
-      console.log(this.populares[i].siguiente);
     }
   },
-  components: { ModalMovie },
+  components: { ModalMovie, Logo },
 };
 </script>
 
@@ -62,8 +61,8 @@ export default {
         <!-- Columna izquierda: Título -->
         <div class="grid content-end p-3 lg:p-5">
           <p>
-            <span class="font-semibold">{{ item.title }}</span
-            ><br />
+            <Logo :id="item.id"></Logo>
+            <br />
             <!-- TMDB LOGO -->
             <img
               class="relative bottom-0.5 mr-2 inline-block h-6 w-11"
