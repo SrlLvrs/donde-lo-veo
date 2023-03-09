@@ -36,6 +36,6 @@ export default {
 
 <template>
   <div class="w-40 lg:w-80">
-    <img :src="logo" alt="logo">
+    <img :src="logoo" alt="logo">
   </div>
 </template>

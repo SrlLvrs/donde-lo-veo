@@ -62,9 +62,10 @@ export default {
         <div class="grid content-end p-3 lg:p-5">
           <p>
             <Logo :id="item.id"></Logo>
-            <br />
             <!-- TMDB LOGO -->
-            <!-- <img
+            <!-- 
+              <br />
+              <img
               class="relative bottom-0.5 mr-2 inline-block h-6 w-11"
               src="/tmdb.svg"
               alt="tmdb logo"

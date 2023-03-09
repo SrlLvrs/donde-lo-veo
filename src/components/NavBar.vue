@@ -1,33 +1,58 @@
-<script setup>
+<script>
 import {
   HomeIcon,
   MagnifyingGlassIcon,
   GlobeAmericasIcon,
 } from "@heroicons/vue/24/outline";
+import axios from "axios";
 
-const items = [
-  {
-    name: "Inicio",
-    href: "#",
-    icon: HomeIcon,
+export default {
+  //Nombre del componente
+  name: "PeliculasPopulares",
+
+  //Datos
+  data() {
+    return {
+      items: [
+        {
+          name: "Inicio",
+          href: "#",
+          icon: HomeIcon,
+        },
+        {
+          name: "Buscar",
+          href: "#",
+          icon: MagnifyingGlassIcon,
+        },
+        {
+          name: "Descubrir",
+          href: "#",
+          icon: GlobeAmericasIcon,
+        },
+      ],
+      prompt: "",
+      resultados: [],
+    };
   },
-  {
-    name: "Buscar",
-    href: "#",
-    icon: MagnifyingGlassIcon,
+
+  //Métodos
+  methods: {
+    async buscar(prompt) {
+      let key = import.meta.env.VITE_TMDB_KEY;
+      let base_url = "https://api.themoviedb.org/3/search/multi";
+      //Variable con endpoint
+      let url = `${base_url}?api_key=${key}&language=es&query=${prompt}&page=1&include_adult=false`;
+      await axios.get(url).then((response) => this.resultados = response.data.results);
+      console.log(this.resultados);
+    },
   },
-  {
-    name: "Descubrir",
-    href: "#",
-    icon: GlobeAmericasIcon,
-  },
-];
+};
 </script>
 
 <template>
   <div class="navbar fixed top-0 z-10 bg-white/50 backdrop-blur-sm">
+    <!-- Lado izquierdo del navbar, contiene el menú mobile -->
     <div class="navbar-start lg:w-1/4">
-      <!-- Lado izquierdo del navbar, contiene el menú mobile -->
       <div class="dropdown">
         <label tabindex="0" class="btn btn-ghost lg:hidden">
           <svg
@@ -68,11 +93,21 @@ const items = [
         <span class="mr-2"> Dónde lo veo </span>
       </a>
     </div>
-    <div class="navbar-center">
-      <!-- Lado central del navbar, vacío -->
-    </div>
+    <!-- Lado central del navbar, vacío -->
+    <div class="navbar-center"></div>
+    <!-- Lado derecho del navbar -->
     <div class="navbar-end hidden lg:flex lg:w-3/4">
-      <!-- Lado derecho del navbar -->
+      <!-- BUSCADOR -->
+      <div class="form-control">
+        <!-- Input que busca usando la tecla enter -->
+        <input
+          type="text"
+          v-model="prompt"
+          placeholder="Busca aquí"
+          class="input input-ghost w-full max-w-xs"
+          @keyup.enter="buscar(prompt)"
+        />
+      </div>
       <ul class="menu menu-horizontal px-1">
         <li v-for="item in items" :key="item.name" :href="item.href">
           <a :href="item.href">
