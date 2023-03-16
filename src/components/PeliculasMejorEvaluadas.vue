@@ -38,7 +38,7 @@ export default {
       :key="item.index"
     >
       <div class="card card-compact w-40 md:w-48 bg-base-100 shadow-lg">
-        <figure><img class="h-60 md:h-72" :src="image+item.poster_pathh" alt="poster" /></figure>
+        <figure><img class="h-60 md:h-72" :src="image+item.poster_path" alt="poster" /></figure>
         <div class="card-body gap-0">
           <a :href="item.href">
             <h2 class="card-title">{{ item.title }}</h2>

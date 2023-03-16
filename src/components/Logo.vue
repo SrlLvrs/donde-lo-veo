@@ -28,14 +28,12 @@ export default {
       .then((response) => (this.images = response.data));
       //Variable con la ruta al primer logo del array
       this.logo = this.base_image + this.images.logos[0].file_path
-
-      console.log(this.logo);
   },
 };
 </script>
 
 <template>
   <div class="w-40 lg:w-80">
-    <img :src="logoo" alt="logo">
+    <img :src="logo" alt="logo">
   </div>
 </template>

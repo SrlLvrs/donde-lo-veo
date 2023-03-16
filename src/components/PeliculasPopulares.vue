@@ -53,7 +53,7 @@ export default {
       class="md:text-xl lg:text-2xl carousel-item relative h-72 md:h-96 lg:h-[32rem] xl:h-[40rem] w-full bg-cover bg-top"
       v-for="item in populares"
       :key="item.index"
-      :style="{ backgroundImage: `url(${this.image}+${item.backdrop_path})` }"
+      :style="{ backgroundImage: `url(${this.image}${item.backdrop_path})` }"
       :id="item.id"
     >
       <!-- Título y botones -->
