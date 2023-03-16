@@ -50,7 +50,7 @@ export default {
 </script>
 
 <template>
-  <div class="navbar fixed top-0 z-10 bg-white/50 backdrop-blur-sm">
+  <div class="navbar top-0 z-10 bg-white/50 backdrop-blur-sm">
     <!-- Lado izquierdo del navbar, contiene el menú mobile -->
     <div class="navbar-start lg:w-1/4">
       <div class="dropdown">
