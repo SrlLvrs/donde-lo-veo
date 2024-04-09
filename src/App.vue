@@ -8,7 +8,6 @@ import Buscador from "./components/Buscador.vue";
 
 <template>
   <div id="app">
-    <NavBar></NavBar>
     <Buscador></Buscador>
     <PeliculasPopulares></PeliculasPopulares>
     <PeliculasMejorEvaluadas></PeliculasMejorEvaluadas>
