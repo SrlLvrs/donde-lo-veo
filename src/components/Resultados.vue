@@ -1,24 +1,3 @@
-<script>
-import ModalMovie from "./ModalMovie.vue";
-
-export default {
-  //Nombre del componente
-  name: "Resultados",
-
-  props: {
-    results: Array
-  },
-
-  data() {
-    return {
-      image: "https://image.tmdb.org/t/p/original",
-    };
-  },
-
-  components: { ModalMovie },
-};
-</script>
-
 <template>
   <h2 class="m-5 text-xl md:text-2xl font-semibold">Resultados</h2>
   <div class="carousel rounded-box">
@@ -32,6 +11,7 @@ export default {
         <div class="card-body gap-0">
           <a :href="item.href">
             <h2 class="card-title">{{ item.title }}</h2>
+            <h2 class="card-title">{{ item.name }}</h2>
           </a>
           <!-- ESTRELLA SVG CON NOTA -->
           <p class="lg:text-lg pb-4">
@@ -49,9 +29,32 @@ export default {
             </svg>
             {{ item.vote_average }}
           </p>
-          <ModalMovie :name="item.title" :id="item.id" :id_modal="item.title" :overview="item.overview"></ModalMovie>
+            <ModalMovie v-if="item.media_type == 'movie'" :name="item.title" :id="item.id" :id_modal="item.title" :overview="item.overview"></ModalMovie>
+            <ModalTV v-if="item.media_type == 'tv'" :name="item.name" :id="item.id" :id_modal="item.name" :overview="item.overview"></ModalTV>
         </div>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+import ModalMovie from "./ModalMovie.vue";
+import ModalTV from "./ModalTV.vue";
+
+export default {
+  //Nombre del componente
+  name: "Resultados",
+
+  props: {
+    results: Array
+  },
+
+  data() {
+    return {
+      image: "https://image.tmdb.org/t/p/original",
+    };
+  },
+
+  components: { ModalMovie, ModalTV },
+};
+</script>
